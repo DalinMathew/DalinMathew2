@@ -52,7 +52,7 @@ async def cb_navg(bot, update: CallbackQuery):
         VERIFY[str(chat_id)] = admin_list
     
     if not ((user_id == ruser_id) or (user_id in admin_list)): # Checks if user is same as requested user or is admin
-        await update.answer("Nice Try ;)",show_alert=True)
+        await update.answer("Sorry , Only Req Person Can Do It 🥲)",show_alert=True)
         return
 
 
@@ -81,7 +81,7 @@ async def cb_navg(bot, update: CallbackQuery):
 
     if ((index_val + 1 )== max_pages) or ((index_val + 1) == len(results)): # Max Pages
         temp_results.append([
-            InlineKeyboardButton("⏪ Back", callback_data=f"navigate({index_val}|back|{query})")
+            InlineKeyboardButton("《 Back", callback_data=f"navigate({index_val}|back|{query})")
         ])
 
     elif int(index_val) == 0:
@@ -89,13 +89,13 @@ async def cb_navg(bot, update: CallbackQuery):
 
     else:
         temp_results.append([
-            InlineKeyboardButton("⏪ Back", callback_data=f"navigate({index_val}|back|{query})"),
-            InlineKeyboardButton("Next ⏩", callback_data=f"navigate({index_val}|next|{query})")
+            InlineKeyboardButton("《 Back", callback_data=f"navigate({index_val}|back|{query})"),
+            InlineKeyboardButton("Next 》", callback_data=f"navigate({index_val}|next|{query})")
         ])
 
     if not int(index_val) == 0:    
         temp_results.append([
-            InlineKeyboardButton(f"🔰 Page {index_val + 1}/{len(results) if len(results) < max_pages else max_pages} 🔰", callback_data="ignore")
+            InlineKeyboardButton(f"📃 Page {index_val + 1}/{len(results) if len(results) < max_pages else max_pages} 📃", callback_data="ignore")
         ])
     
     if show_invite and int(index_val) !=0 :
@@ -142,7 +142,7 @@ async def cb_navg(bot, update: CallbackQuery):
     
     reply_markup = InlineKeyboardMarkup(temp_results)
     
-    text=f"<i>Found</i> <code>{leng}</code> <i>Results For Your Query:</i> <code>{query}</code>"
+    text=f"⚜️ Check Links At @MalRok ..⚜️\nFound <code>{leng}</code> Results For Your Request 😇 <code>{query}</code>\n\n<a href="https://t.me/joinchat/VMw2EBPhLRRjNTBl">▫️𝗧𝗘𝗔𝗠 𝗠𝗔𝗟𝗔𝗬𝗔𝗟𝗔𝗠 𝗥𝗢𝗖𝗞𝗘𝗥𝗦▫️</a>"
         
     try:
         await update.message.edit(
@@ -1608,7 +1608,7 @@ async def cb_about(bot, update: CallbackQuery):
         [
             InlineKeyboardButton
                 (
-                    "My Dev ⚡", url="https://t.me/AlbertEinstein_TG"
+                    "Bot Owner", url="https://t.me/null_fallaci"
                 ),
                 
             InlineKeyboardButton
@@ -1639,12 +1639,9 @@ async def callback_data(bot, update: CallbackQuery):
 
     if query_data == "start":
         buttons = [[
-            InlineKeyboardButton('My Dev 👨‍🔬', url='https://t.me/AlbertEinstein_TG'),
-            InlineKeyboardButton('Source Code 🧾', url ='https://github.com/CrazyBotsz/Adv-Filter-Bot-V2')
+            InlineKeyboardButton('🔸𝗝𝗢𝗜𝗡 𝗚𝗥𝗢𝗨𝗣🔸', url='https://t.me/jointhisdiscussion'),
         ],[
-            InlineKeyboardButton('Support 🛠', url='https://t.me/CrazyBotszGrp')
-        ],[
-            InlineKeyboardButton('Help ⚙', callback_data="help")
+            InlineKeyboardButton('𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿𝘀', url='https://youtu.be/qW9o9G7stCk')
         ]]
     
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1662,7 +1659,7 @@ async def callback_data(bot, update: CallbackQuery):
             InlineKeyboardButton('Home ⚡', callback_data='start'),
             InlineKeyboardButton('About 🚩', callback_data='about')
         ],[
-            InlineKeyboardButton('Close 🔐', callback_data='close')
+            InlineKeyboardButton('Close 💔', callback_data='close')
         ]]
     
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1678,7 +1675,7 @@ async def callback_data(bot, update: CallbackQuery):
     elif query_data == "about": 
         buttons = [[
             InlineKeyboardButton('Home ⚡', callback_data='start'),
-            InlineKeyboardButton('Close 🔐', callback_data='close')
+            InlineKeyboardButton('Close 💔', callback_data='close')
         ]]
         
         reply_markup = InlineKeyboardMarkup(buttons)
