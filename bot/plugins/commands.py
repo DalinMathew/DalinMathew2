@@ -89,22 +89,22 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('𝗝𝗢𝗜𝗡 𝗚𝗥𝗢𝗨𝗣', url='https://t.me/jointhisdiscussion'),
+        InlineKeyboardButton('🎬 𝗝𝗢𝗜𝗡 𝗚𝗥𝗢𝗨𝗣 🎬', url='https://t.me/jointhisdiscussion'),
     ],[
-        InlineKeyboardButton('𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿𝘀', url='https://youtu.be/qW9o9G7stCk')
+        InlineKeyboardButton('⭕️ 𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿𝘀 ⭕️', url='https://youtu.be/qW9o9G7stCk')
     ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_message(
+    await bot.send_photo(
         chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(
+        photo="https://telegra.ph/file/235afaf8950dae78201c1.jpg",
+        caption=Translation.START_TEXT.format(
                 update.from_user.first_name),
         reply_markup=reply_markup,
         parse_mode="html",
         reply_to_message_id=update.message_id
     )
-
 
 @Client.on_message(filters.command(["help"]) & filters.private, group=1)
 async def help(bot, update):
