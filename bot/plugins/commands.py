@@ -103,7 +103,6 @@ async def start(bot, update):
     ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
-
         await message.reply_photo(
             photo=random.choice(PHOTO),
             caption=Translation.START_TEXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
