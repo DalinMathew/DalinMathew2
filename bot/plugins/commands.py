@@ -7,6 +7,14 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from bot import Translation # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 
+PHOTO = [
+"https://telegra.ph/file/b94116a347f395274fa43.jpg",
+"https://telegra.ph/file/8e0180b63d51805dcbd6a.jpg",
+"https://telegra.ph/file/b94116a347f395274fa43.jpg",
+"https://telegra.ph/file/8e0180b63d51805dcbd6a.jpg",
+"https://telegra.ph/file/b94116a347f395274fa43.jpg",
+"https://telegra.ph/file/8e0180b63d51805dcbd6a.jpg"
+]
 db = Database()
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
@@ -95,16 +103,13 @@ async def start(bot, update):
     ]]
     
     reply_markup = InlineKeyboardMarkup(buttons)
-    
-    await bot.send_photo(
-        chat_id=update.chat.id,
-        photo="https://telegra.ph/file/235afaf8950dae78201c1.jpg",
-        caption=Translation.START_TEXT.format(
-                update.from_user.first_name),
-        reply_markup=reply_markup,
-        parse_mode="html",
-        reply_to_message_id=update.message_id
-    )
+
+        await message.reply_photo(
+            photo=random.choice(PHOTO),
+            caption=Translation.START_TEXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
 
 @Client.on_message(filters.command(["help"]) & filters.private, group=1)
 async def help(bot, update):
