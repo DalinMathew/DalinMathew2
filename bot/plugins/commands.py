@@ -7,6 +7,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from bot import Translation # pylint: disable=import-error
 from bot.database import Database # pylint: disable=import-error
 
+#photo code kanged from @codes4ya Channel !
+#Add atleast 10+ Telegraph Links below 👇
+
+
+PHOTO = [
+    "https://telegra.ph/file/02e09c93b7d60689a5f58.jpg",
+
+]
+
 db = Database()
 
 @Client.on_message(filters.command(["start"]) & filters.private, group=1)
@@ -83,23 +92,27 @@ async def start(bot, update):
                 )
             )
 
-        else:
-            print(file_type)
-        
-        return
-
-    buttons = [[
-        InlineKeyboardButton('🎬 𝗝𝗢𝗜𝗡 𝗚𝗥𝗢𝗨𝗣 🎬', url='https://t.me/jointhisdiscussion'),
-    ],[
-        InlineKeyboardButton('⭕️ 𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿𝘀 ⭕️', url='https://youtu.be/qW9o9G7stCk')
-    ]]
+          else:
+        await cmd.reply_photo(
+            photo=f"{random.choice(PHOTO)}",
+            caption=START_MSG,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('🎬 𝗝𝗢𝗜𝗡 𝗚𝗥𝗢𝗨𝗣 🎬', url='https://t.me/jointhisdiscussion'),
+                    ],
+                    [
+                        InlineKeyboardButton('⭕️ 𝗗𝗲𝗽𝗹𝗼𝘆 𝗬𝗼𝘂𝗿𝘀 ⭕️', url='https://youtu.be/qW9o9G7stCk')
+                    ]
+                ]
+            )
+        )
     
     reply_markup = InlineKeyboardMarkup(buttons)
     
-    await bot.send_photo(
+    await bot.send_message(
         chat_id=update.chat.id,
-        photo="https://telegra.ph/file/235afaf8950dae78201c1.jpg",
-        caption=Translation.START_TEXT.format(
+        text=Translation.START_TEXT.format(
                 update.from_user.first_name),
         reply_markup=reply_markup,
         parse_mode="html",
